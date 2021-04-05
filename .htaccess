@@ -1,2 +1,2 @@
 RewriteEngine on
-RewriteRule ^(.*)$ public/index.php?q=$1 [QSA]
+RewriteRule ^(.*)$ index.php?q=$1 [QSA]

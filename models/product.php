@@ -30,6 +30,21 @@ class Product
         return $req->fetchAll();
     }
 
+    public function findAll()
+    {
+
+        $sql = "SELECT * FROM `produit`";
+
+        $req = CustomPDO::getInstance()->prepare($sql);
+
+        $req->setFetchMode(PDO::FETCH_CLASS, 'Product');
+
+        $req->execute();
+
+
+        return $req->fetchAll();
+    }
+
     /**
      * Get the value of id
      */
