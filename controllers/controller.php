@@ -1,5 +1,6 @@
 <?php
 //https://medium.com/@noufel.gouirhate/create-your-own-mvc-framework-in-php-af7bd1f0ca19
+# https://nouvelle-techno.fr/actualites/live-coding-introduction-au-mvc-en-php
 $parameters = explode('/', filter_input(INPUT_GET, 'q', FILTER_SANITIZE_STRING));
 
 $requestedPage = empty($parameters[0]) ? 'index' : $parameters[0];
@@ -17,6 +18,19 @@ switch ($requestedPage) {
         $product = new Product();
         $products = $product->findAllByCategory('com');
         $displayedPage = '../views/productList.php';
+        break;
+
+    case 'product':
+        require('../models/product.php');
+        $product = new Product();
+        $products = $product->findAllByCategory('com');
+        $displayedPage = '../views/productList.php';
+        break;
+
+    case 'logout':
+        $_SESSION = array();
+        session_destroy();
+        header('Location: ./index');
         break;
 
     default:
