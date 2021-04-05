@@ -12,27 +12,15 @@ switch ($requestedPage) {
         # code...
         break;
 
+    case 'product':
+        require('../models/product.php');
+        $product = new Product();
+        $products = $product->findAllByCategory('com');
+        $displayedPage = '../views/productList.php';
+        break;
+
     default:
         header("HTTP/1.0 404 Not Found");
-        $displayedPage = 'views/404.php';
+        $displayedPage = '../views/404.php';
         break;
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-</head>
-
-<body>
-    <?php
-    require('views/components/header.php');
-    require($displayedPage);
-    require('views/components/footer.php');
-    ?>
-</body>
-
-</html>

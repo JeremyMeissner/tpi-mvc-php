@@ -1,24 +1,27 @@
 <?php
 require(__DIR__ . '/constants.inc.php');
 
-class Pdo
+class CustomPDO
 {
-    static $db = null;
+    private static $PDOInstance = null;
+
+    private static $CustomPDOInstance = null;
 
     private function __construct()
     {
-        Pdo::$db = new PDO('mysql:host=' . SERVER . ';dbname=' . SCHEMA . ';charset=utf8', USER, PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false));
+        self::$PDOInstance = new PDO('mysql:host=' . SERVER . ';dbname=' . SCHEMA . ';charset=utf8', USER, PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_EMULATE_PREPARES => false));
     }
 
-    private function __destruct()
+    public function __destruct()
     {
-        Pdo::$db = null;
+        self::$PDOInstance = null;
+        self::$CustomPDOInstance = null;
     }
     public static function getInstance()
     {
-        if (self::$db == null) {
-            self::$db = new Pdo();
+        if (self::$PDOInstance == null) {
+            self::$CustomPDOInstance = new self;
         }
-        return self::$db;
+        return self::$PDOInstance;
     }
 }
