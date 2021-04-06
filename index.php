@@ -19,19 +19,12 @@ if (!empty($parameters[0])) {
     $requestedPage = "index";
 }
 
-$displayedPage = "";
+require_once(ROOT . 'app/html.php');
 
-switch ($requestedPage) {
-    case 'index':
-    case 'index.php':
+if (file_exists(ROOT . "controllers/$requestedPage.php")) {
 
-        break;
-    case 'product':
-        require_once(ROOT . 'controllers/productsController.php');
-        break;
-
-    default:
-        header("HTTP/1.0 404 Not Found");
-        $displayedPage = ROOT . 'views/404.php';
-        break;
+    require_once(ROOT . "controllers/$requestedPage.php");
+} else {
+    header("HTTP/1.0 404 Not Found");
+    require_once(ROOT . 'controllers/404.php');
 }

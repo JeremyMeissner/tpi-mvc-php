@@ -1,5 +1,5 @@
 <?php
-require(__DIR__ . '/constants.inc.php');
+require_once(ROOT . 'models/config/constants.inc.php');
 
 class CustomPDO
 {

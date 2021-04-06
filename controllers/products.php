@@ -2,7 +2,7 @@
 if (isset($action)) {
     switch ($action) {
         case 'all':
-            require_once(ROOT . 'models/product.php');
+            require_once(ROOT . 'models/products.php');
 
             $product = new Product();
             $products = $product->findAll();
@@ -10,7 +10,7 @@ if (isset($action)) {
 
             break;
         case 'categorie':
-            require_once(ROOT . 'models/product.php');
+            require_once(ROOT . 'models/products.php');
 
             $product = new Product();
             $products = $product->findAllByCategory($element);
@@ -24,7 +24,5 @@ if (isset($action)) {
             break;
     }
 
-    require_once(ROOT . 'views/components/header.php');
-    require_once($displayedPage);
-    require_once(ROOT . 'views/components/footer.php');
+    HTML::render($displayedPage);
 }

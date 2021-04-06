@@ -1,5 +1,5 @@
 <?php
-require('pdo.inc.php');
+require_once(ROOT . 'models/config/pdo.inc.php');
 class Product
 {
     private $id;
