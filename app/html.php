@@ -8,3 +8,4 @@ class HTML
         require_once(ROOT . 'views/components/footer.php');
     }
 }
+// test
