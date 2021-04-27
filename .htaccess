@@ -1,2 +1,4 @@
-RewriteEngine on
-RewriteRule ^(.*)$ index.php?q=$1 [QSA]
+#RewriteEngine on
+#RewriteRule ^((?!.*\.css|.*\.js|.*\.svg|.*\.jpg).*)$ index.php?q=$1 [QSA]
+
+#ErrorDocument 404 /404
